@@ -22,7 +22,7 @@ nav ul{
     display: flex;
     list-style-type: none;
     height: 50px;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(32, 32, 32);
     color: white;
     align-items: center;
 }
@@ -46,7 +46,7 @@ nav ul li{
 
 .container{
     min-height: 70vh;
-    background-color: rgb(37, 37, 37);
+    background-color: rgb(59, 59, 59);
     color: whitesmoke;
     font-family: 'Onest', sans-serif;
     display: flex;
@@ -138,4 +138,14 @@ nav ul li{
     
     font-size: 2vh;
     color: rgb(255, 255, 255);
+}
+
+.fotterPart{
+    font-family: 'Onest', sans-serif;
+    display: flex;
+    justify-content: right;
+}
+.fotterPart p{
+    padding: 10px;
+    font-weight: bold;
 }
