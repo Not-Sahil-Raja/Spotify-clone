@@ -2,11 +2,12 @@ console.log("Welcome to spotify");
 
 let songIndex = 0;
 
-let audioElement = new Audio("songs/1.mp3");
+let audioElement = new Audio("");
 let masterPlay = document.getElementById("masterPlay");
 let myProgressBar = document.getElementById("myProgressBar");
 let songItems = Array.from(document.getElementsByClassName("songItem"));
 let masterSongName = document.getElementById("songNameSpan");
+let nowPlaying = document.querySelector(".nowPlaying");
 
 let songs = [
   {
@@ -53,29 +54,37 @@ masterPlay.addEventListener("click", () => {
     audioElement.play();
     masterPlay.classList.remove("fa-circle-play");
     masterPlay.classList.add("fa-circle-pause");
+    playIcon();
   } else {
     audioElement.pause();
     masterPlay.classList.add("fa-circle-play");
     masterPlay.classList.remove("fa-circle-pause");
+    pauseIcon();
   }
 });
 
 //seek-bar
 audioElement.addEventListener("timeupdate", () => {
-  progress = parseInt((audioElement.currentTime / audioElement.duration) * 100);
+  progress = parseFloat(
+    (audioElement.currentTime / audioElement.duration) * 100
+  );
   myProgressBar.value = progress;
 });
 
 myProgressBar.addEventListener("change", () => {
   audioElement.currentTime =
     (myProgressBar.value * audioElement.duration) / 100;
+
+  console.log((myProgressBar.value * audioElement.duration) / 100);
 });
 
+//covers and songs
 songItems.forEach((element, i) => {
   element.getElementsByTagName("img")[0].src = songs[i].coverPath;
   element.getElementsByClassName("songsName")[0].innerHTML = songs[i].songName;
 });
 
+//func for plays
 const makeAllPlays = () => {
   Array.from(document.getElementsByClassName("songItemPlay")).forEach(
     (element) => {
@@ -85,20 +94,36 @@ const makeAllPlays = () => {
   );
 };
 
+//song play from cover
 Array.from(document.getElementsByClassName("songItemPlay")).forEach(
   (element) => {
     element.addEventListener("click", (e) => {
       makeAllPlays();
       songIndex = parseInt(e.target.id);
-      e.target.classList.remove("fa-circle-play");
-      e.target.classList.add("fa-circle-pause");
-      audioElement.src = `songs/${songIndex}.mp3`;
-      masterSongName.innerText =
-        "Now Playing: " + songs[songIndex - 1].songName;
-      audioElement.play();
-      audioElement.currentTime = 0;
-      masterPlay.classList.remove("fa-circle-play");
-      masterPlay.classList.add("fa-circle-pause");
+      if (audioElement.paused || audioElement.currentTime <= 0) {
+        e.target.classList.remove("fa-circle-play");
+        e.target.classList.add("fa-circle-pause");
+        audioElement.src = `songs/${songIndex}.mp3`;
+        masterSongName.innerText =
+          "Now Playing: " + songs[songIndex - 1].songName;
+        audioElement.play();
+        // audioElement.currentTime = 0;
+        masterPlay.classList.remove("fa-circle-play");
+        masterPlay.classList.add("fa-circle-pause");
+        playIcon();
+        songItemChangePlay(songIndex);
+      } else {
+        e.target.classList.add("fa-circle-play");
+        e.target.classList.remove("fa-circle-pause");
+        // audioElement.src = `songs/${songIndex}.mp3`;
+        masterSongName.innerText = "Paused: " + songs[songIndex - 1].songName;
+        audioElement.pause();
+        // audioElement.currentTime = 0;
+        masterPlay.classList.add("fa-circle-play");
+        masterPlay.classList.remove("fa-circle-pause");
+        pauseIcon();
+        songItemChangePause(songIndex);
+      }
     });
   }
 );
@@ -130,3 +155,20 @@ document.getElementById("previous").addEventListener("click", () => {
   masterPlay.classList.remove("fa-circle-play");
   masterPlay.classList.add("fa-circle-pause");
 });
+
+//for playing icon
+const playIcon = () => {
+  nowPlaying.style.opacity = "1";
+};
+const pauseIcon = () => {
+  nowPlaying.style.opacity = "0";
+};
+
+//songItem changes after play
+const songItemChangePlay = () => {
+  songItems[songIndex - 1].style.backgroundColor = "rgba(219, 216, 216, 0.9)";
+};
+
+const songItemChangePause = () => {
+  songItems[songIndex - 1].style.backgroundColor = "rgba(219, 216, 216, 0.5)";
+};
