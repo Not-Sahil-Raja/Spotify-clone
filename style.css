@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=AR+One+Sans&family=Kanit&family=Onest&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html , body{
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    background-color: rgb(212, 202, 189);
+}
+
+nav{
+    font-family: 'Kanit', sans-serif;
+}
+
+nav ul{
+    display: flex;
+    list-style-type: none;
+    height: 50px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    align-items: center;
+}
+
+nav ul li{
+    padding: 0 15px;
+}
+
+.brand img{
+    height: 30px;
+    width: 30px;
+    margin: 8px;
+}
+
+.brand{
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 1.1rem;
+}
+
+.container{
+    min-height: 70vh;
+    background-color: rgb(37, 37, 37);
+    color: whitesmoke;
+    font-family: 'Onest', sans-serif;
+    display: flex;
+    margin: 20px auto;
+    width: 95%;
+    border-radius: 15px;
+    padding: 25px;
+
+    background-image: url("https://images.hdqwalls.com/download/anime-girl-with-guitar-watching-the-sunset-4k-fh-1920x1080.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.bottom{
+    position: sticky;
+    height: 100px;
+    background-color: rgb(37, 37, 37);
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#myProgressBar{
+    width: 80vw;
+    text-align: center;
+    cursor: pointer;
+}
+.icons{
+    margin-top:15px;
+    
+}
+.icons i{
+    cursor: pointer;
+    padding: 0 2px;
+}
+
+.songItem {
+    height: 40px;
+    display: flex;
+    background-color: rgba(219, 216, 216, 0.5);
+    color: black;
+    margin: 12px 0;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4 30px rgba(0, 0, 0, 0.2);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.songItem img{
+    width: 35px;
+    margin: 0 10px;
+    border-radius: 10px;
+}
+.timeStamp{
+    margin: 0 10px;
+}
+
+.timeStamp i{
+    padding: 0px 5px;
+    cursor: pointer;
+}
+.songItemConatainer{
+    margin-top: 70px;
+}
+.songInfo{
+    position: absolute;
+    left: 10vw;
+    color: aliceblue;
+    font-family: 'Onest', sans-serif;
+    display: flex;
+    align-items: center;
+    bottom: 3vh;
+}
+/* .songInfo img{
+    object-fit: fill;
+    width:2vw ;
+    height:2vw; 
+    margin: 0 10px;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+} */
+.songName{
+    
+    font-size: 2vh;
+    color: rgb(255, 255, 255);
+}
