@@ -11,7 +11,7 @@ html , body{
 }
 
 body{
-    background-color: rgb(212, 202, 189);
+    background-color: rgb(44, 44, 44);
 }
 
 nav{
@@ -25,6 +25,7 @@ nav ul{
     background-color: rgb(32, 32, 32);
     color: white;
     align-items: center;
+    justify-content: space-around;
 
     animation: slideIn 1s ease-in  ;
 }
@@ -64,7 +65,8 @@ nav ul li a{
     width: 95%;
     border-radius: 15px;
     padding: 25px;
-
+    flex-direction: column;
+    
     /* background-image: url("https://images.hdqwalls.com/download/anime-girl-with-guitar-watching-the-sunset-4k-fh-1920x1080.jpg"); */
 
     background-image:
@@ -78,10 +80,16 @@ nav ul li a{
     animation: slideDown .7s ease-in 1s forwards;
 }
 
+.mainItems{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
 .bottom{
     position: sticky;
     height: 100px;
-    background-color: rgb(37, 37, 37);
+    background-color: rgb(26, 26, 26);
     bottom: 0;
     display: flex;
     justify-content: center;
@@ -102,7 +110,46 @@ nav ul li a{
     cursor: pointer;
     padding: 0 2px;
 }
+.songSidePop{
+    background-color: rgba(192, 192, 192, 0.26);
+    height:25vw;
+    width:18vw;
+    /* margin-bottom: auto; */
+    border-radius: 5px;
+    margin: 7vw 5vw; 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 1px 1px 10px rgb(146, 145, 145) inset;
+    border: solid 2px rgb(212, 210, 210);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    transition: scale .3s ease-in-out;
+    scale: 0;
+}
+.coverImg{
+    height: 12vw;
+    width: 12vw;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    padding: 5px;
+    box-shadow: #505050 1px 1px 5px ;
+    transition: scale .3s ease-in-out;
+}
 
+.songNames{
+    font-weight: bold;
+    margin-top: .7vw;
+    font-size: 1.3vw;
+}
+.songtext1{
+    margin-top: 1vw;
+    font-size: 1vw;
+}
 .songItem {
     height: 40px;
     display: flex;
@@ -121,7 +168,7 @@ nav ul li a{
     transition: all .3s ease-in ;
 
     animation: slideIn 1s ease-in 1s ;
-
+    
 }
 
 .songItem:hover{
@@ -144,7 +191,9 @@ nav ul li a{
 }
 
 .songItemConatainer{
-    margin-top: 70px;
+    /* margin-top: 70px;  */
+    margin: 7vw 5vw; 
+
 }
 .songInfo{
     position: absolute;
@@ -177,6 +226,7 @@ nav ul li a{
     font-family: 'Onest', sans-serif;
     display: flex;
     justify-content: right;
+    color:azure
 }
 .fotterPart p{
     padding: 10px;
@@ -234,6 +284,8 @@ nav ul li a{
     }
 }
 
+
+
 #songText{
     text-shadow:  1px 1px 1px #919191,
     1px 2px 1px #919191,
@@ -244,4 +296,15 @@ nav ul li a{
     1px 7px 1px #363636,
     1px 8px 1px #363636,
     1px 20px 40px rgba(0, 0, 0, 0.3);
+
+    font-size: 3.5vw;
+    font-weight: bold;
+    margin-left: 5vw;
 }
+
+@media(max-width:1300px){
+.container{
+    flex-wrap: wrap;
+}
+}
+
